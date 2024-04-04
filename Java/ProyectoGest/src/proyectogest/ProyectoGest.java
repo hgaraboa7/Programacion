@@ -28,7 +28,7 @@ public class ProyectoGest {
 
             switch (opcion) {
                 case 1:
-                    control.MostrarVuelos(listaVuelos);
+                    Control.MostrarVuelos(listaVuelos);
                     break;
                 case 2:
                     control.darSalidaAVuelo(scanner);

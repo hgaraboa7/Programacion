@@ -9,7 +9,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Collections;
+
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.HashMap;
@@ -58,7 +58,7 @@ public class Control {
 
         // Continuar con el resto del programa
         System.out.println("¡Bienvenido al sistema!");
-        scanner.close();
+        //scanner.close();
     }
 
 
@@ -156,12 +156,19 @@ public class Control {
             if (vuelo.getCodigo().equals(codigo)) {
                 LocalDateTime nuevaSalida = vuelo.getSalida().plusMinutes(minutos);
                 LocalDateTime nuevaLlegada = vuelo.getLlegada().plusMinutes(minutos);
+                // Verificar si la nueva salida o llegada es anterior a la hora actual
+                if (nuevaSalida.isBefore(LocalDateTime.now()) || nuevaLlegada.isBefore(LocalDateTime.now())) {
+                    System.out.println("La hora no puede ser anterior a la hora actual");
+                    return;
+                }
+
                 vuelo.setSalida(nuevaSalida);
                 vuelo.setLlegada(nuevaLlegada);
                 System.out.println("Se ha modificado el horario del vuelo con código " + codigo);
                 return;
             }
         }
+
         System.out.println("No se encontró ningún vuelo con el código proporcionado.");
     }
 
