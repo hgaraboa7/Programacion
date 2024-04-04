@@ -18,10 +18,13 @@ public class Vuelo extends VueloAbstract {
 
     @Override
     public String toString() {
-        return "Vuelo con codigo: " + getCodigo()+
+        return "CODE: " + getCodigo()+
                 " origen: " + getOrigen() +
                 " destino: " + getDestino() +
                 " salida: " + getSalida() +
                 " llegada: " + getLlegada();
     }
+
+
+
 }
