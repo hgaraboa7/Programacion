@@ -7,6 +7,8 @@ public class Conecta_jardineria {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		Connection miConexion = null;
+		
 		try {
 			//1. crear conexion
 			
@@ -17,7 +19,7 @@ public class Conecta_jardineria {
 			String mysqlPass="abcd1234.";
 			
 			
-			Connection miConexion=DriverManager.getConnection
+			 miConexion=DriverManager.getConnection
 					(mysqlUrl, mysqlUser, mysqlPass);
 			
 			System.out.println("conexion realizada con exito");
@@ -35,17 +37,17 @@ public class Conecta_jardineria {
 					("SELECT * FROM cliente;");
 			
 			
-			// 4. Recorrer resulset
+			// 4. Recorrer resulset, es una tabla virtual
 			
 			while(miResultSet.next()) {
 				
-				System.out.println(miResultSet.getString
+				System.out.println(miResultSet.getInt
 						("codigo_cliente")+" " + miResultSet.getString("nombre_cliente")
 						+" "+ miResultSet.getString("telefono"));
 				
 				
 				
-			}
+			} 
 			
 			
 			
@@ -58,6 +60,18 @@ public class Conecta_jardineria {
 			System.out.println("Error en conexion");
 			
 			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				miConexion.close();
+				System.out.println("----------------------------------------");
+				System.out.println("Conexion cerrada");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Error en cerrar la conexion");
+				e.printStackTrace();
+			}
 			
 		}
 		
