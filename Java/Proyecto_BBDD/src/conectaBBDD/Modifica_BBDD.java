@@ -50,6 +50,8 @@ public class Modifica_BBDD {
 			
 			
 			//2.1 crear instruccion sql
+			//2.2 Funciona igual para update o delete
+			
 			
 			String instSql="INSERT INTO cliente(codigo_cliente, nombre_cliente, telefono, ciudad)"
 					+ "VALUES(?,?,?,?)";
