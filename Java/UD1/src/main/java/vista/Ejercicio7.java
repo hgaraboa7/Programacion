@@ -6,6 +6,8 @@ package vista;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,12 +19,13 @@ public class Ejercicio7 {
              dir.mkdir();
          }
     }
-         public static void creaFichero(File fich) throws IOException{
+         public static void creaFichero(File fich) throws IOException {
          if(!fich.exists()){
              fich.createNewFile();
          }
          }
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) {
+        try {
          File d1 = new File("./src/main/resources/juegos");
          creaDirectorio(d1);
          String n1="rol";
@@ -33,6 +36,9 @@ public class Ejercicio7 {
          String n2="parejas";
          File d3=new File(d1,n2);
          creaDirectorio(d3);
+         } catch (IOException ex) {
+            System.out.println("ha habido un error");
+        }
              
          
     }
