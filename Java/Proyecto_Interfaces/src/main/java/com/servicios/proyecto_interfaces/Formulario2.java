@@ -55,6 +55,7 @@ public class Formulario2 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jSlider2 = new javax.swing.JSlider();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -137,7 +138,11 @@ public class Formulario2 extends javax.swing.JFrame {
 
         jLabel6.setText("marque del 1 al 10 su grado de aficion a :");
 
+        jSlider1.setMajorTickSpacing(1);
         jSlider1.setMaximum(10);
+        jSlider1.setMinimum(1);
+        jSlider1.setMinorTickSpacing(1);
+        jSlider1.setPaintLabels(true);
         jSlider1.setValue(5);
         jSlider1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -146,6 +151,14 @@ public class Formulario2 extends javax.swing.JFrame {
         jLabel8.setText("Television");
 
         jLabel9.setText("cine");
+
+        jSlider2.setMajorTickSpacing(1);
+        jSlider2.setMaximum(10);
+        jSlider2.setMinimum(1);
+        jSlider2.setMinorTickSpacing(1);
+        jSlider2.setPaintLabels(true);
+        jSlider2.setValue(5);
+        jSlider2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,8 +200,10 @@ public class Formulario2 extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel7)
                             .addComponent(jLabel9))
-                        .addGap(93, 93, 93)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(98, 98, 98)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(224, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -221,13 +236,15 @@ public class Formulario2 extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(48, 48, 48)
-                .addComponent(jLabel8)
-                .addGap(44, 44, 44)
+                    .addComponent(jLabel7)
+                    .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
                 .addComponent(jLabel9)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -312,6 +329,7 @@ public class Formulario2 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSlider jSlider1;
+    private javax.swing.JSlider jSlider2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
