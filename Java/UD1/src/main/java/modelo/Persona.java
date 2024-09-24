@@ -4,11 +4,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author hector.garaboacasas
  */
-public class Persona {
+public class Persona implements Serializable {
     int id;
     String nombre;
     double salario;
