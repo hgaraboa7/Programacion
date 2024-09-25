@@ -19,7 +19,7 @@ public class Note {
         try{
             pbNote=new ProcessBuilder(note);
           
-            pbNote.redirectOutput(new File("./src/main/resources"));
+            pbNote.redirectOutput(new File("./src/main/resources/datos"));
               pbNote.start();
             //el fichero creado en el notepad debe ser guardado en esta ruta  
             //"./src/main/resources/datos/";
