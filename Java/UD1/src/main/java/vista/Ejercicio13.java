@@ -53,15 +53,18 @@ public class Ejercicio13 {
                     }
 
                     case 3 -> {
+                        insertar(fi);
                     }
 
                     case 4 -> {
+                        modificar(fi);
                     }
 
                     case 5 -> {
                     }
 
                     case 6 -> {
+                        break;
                         
                     }
                 }
@@ -168,6 +171,138 @@ public class Ejercicio13 {
         }
         
     }
+    
+    
+    private static void insertar(File fichero) throws IOException{
+        
+        String nuevonombre;
+        double nuevosalario;
+        int nuevodepart;
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Dime el nombre");
+        nuevonombre=sc.nextLine();        
+        System.out.println("Dime el departamento");
+        nuevodepart=Integer.parseInt(sc.nextLine());
+        System.out.println("Dime el nuevo salario");
+        nuevosalario=Double.parseDouble(sc.nextLine());
+        
+        try(RandomAccessFile raf= new RandomAccessFile(fichero, "rw")){
+            raf.seek(raf.length());
+            raf.writeInt((int) ((raf.length()/36)+1));
+            
+            StringBuffer buffer=new StringBuffer(nuevonombre);
+            buffer.setLength(10);
+            raf.writeChars(buffer.toString());
+            raf.writeInt(nuevodepart);
+            raf.writeDouble(nuevosalario);
+            
+        }
+        
+    }
+    
+    private static void modificar(File fichero) throws IOException{
+        int identificador;
+        
+        Scanner sc=new Scanner(System.in);
+        
+        try(RandomAccessFile raf=new RandomAccessFile(fichero, "rw")){
+            do{
+                if(raf.length()==0){
+                    System.out.println("fichero vacio");
+                    return;
+                }
+                System.out.println("1- indica un numero"+//pedir registro
+                        "registro a modicficar"
+                + ""
+                        +"entr 1 y " +raf.length()/36+": ");
+                identificador=Integer.parseInt(sc.nextLine());
+                if((identificador<=0)||(identificador-1)*36>=raf.length()){
+                    System.out.println("no existe");
+                }
+                        
+            }while(identificador<=0 ||(identificador-1)*36>=raf.length());
+            raf.seek((identificador-1)*36);//posicionarnos
+            
+            //visualizamos
+            System.out.println("------------antes-----------");
+            System.out.println(leeruno(raf));
+            
+            //pedimos datos y nos desplazamos antes del nombre para modificarlo
+            System.out.println("dime el nombre");
+            String nuevonombre=sc.nextLine();
+            System.out.println("dime el nuevo salario");
+            double nuevosalario=Double.parseDouble(sc.nextLine());
+            raf.seek(raf.getFilePointer()-32); //desplazamos el puntero -32 
+            
+            StringBuilder buffer=new StringBuilder(nuevonombre);
+            buffer.setLength(10);   //escribir nombre
+            raf.writeChars(buffer.toString());
+            raf.skipBytes(4);     //saltar departamento
+            raf.writeDouble(nuevosalario);   //modificar salario
+            
+            raf.seek(raf.getFilePointer()-36);  //volvemos al inicio del registro
+            
+            System.out.println("------despuest----");
+            System.out.println(leeruno(raf));
+            
+            
+            
+            
+            
+        }
+        
+    }
+    
+    private static String leeruno(RandomAccessFile raf) throws IOException{
+        int id=0, edad;
+        double salario;
+        char nombre[]= new char[10];
+        
+        id=raf.readInt();
+        for(int i=0;i<nombre.length;i++){
+            nombre[i]=raf.readChar();
+        }
+        
+        String nombrefinal=new String(nombre);
+        
+        edad=raf.readInt();
+        salario=raf.readDouble();
+        
+        return id +" "+ nombrefinal+" "+edad+" "+salario;
+        
+    }
+    
+    private static void borrar (File fichero) throws IOException{
+        int identificador;
+        
+        Scanner sc=new Scanner(System.in);
+        
+        try(RandomAccessFile raf=new RandomAccessFile(fichero, "rw")){
+            do{
+                if(raf.length()==0){
+                    System.out.println("fichero vacio");
+                    return;
+                }
+                System.out.println("1- indica un numero"+//pedir registro
+                        " registro a borrar "
+                + ""
+                        +" entre 1 y " +raf.length()/36+": ");
+                identificador=Integer.parseInt(sc.nextLine());
+                if((identificador<=0)||(identificador-1)*36>=raf.length()){
+                    System.out.println("no existe");
+                }
+                        
+            }while(identificador<=0 ||(identificador-1)*36>=raf.length());
+            
+            
+            
+            
+            }
+    }
+    
+    
+    
     
     
 
