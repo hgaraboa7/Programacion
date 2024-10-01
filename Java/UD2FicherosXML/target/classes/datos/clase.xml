@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<clase>
+    <alumno numero="123">
+        <nombre>Pepe</nombre>
+        <apellido>Garcia</apellido>
+        <apodo>Pep</apodo>
+        <marca>56</marca>
+    </alumno>
+    <alumno numero="457">
+        <nombre>Joan</nombre>
+        <apellido>Pep</apellido>
+        <apodo>Joan</apodo>
+        <marca>78</marca>
+    </alumno>
+    <alumno numero="666">
+        <nombre>Mario</nombre>
+        <apellido>Bros</apellido>
+        <apodo>Mario</apodo>
+        <marca>90</marca>
+    </alumno>
+</clase>
+
