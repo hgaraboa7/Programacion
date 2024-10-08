@@ -1,8 +1,13 @@
 package com.mycompany.proyectofm;
 
+import java.awt.event.MouseEvent;
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
 
 public class Controlador {
 
@@ -31,8 +36,11 @@ public class Controlador {
         // Verifica si el directorio no está vacío.
         if (files != null) {
             for (File file : files) {
-                // Crea un nuevo nodo para cada archivo o directorio.
-                DefaultMutableTreeNode nodeHijo = new DefaultMutableTreeNode(file.getName());
+                //se guarda cada archivo o directorio en un objeto archivonodo
+              
+                ArchivoNodo archivoNodo = new ArchivoNodo(file.getName(), file.getAbsolutePath(), file.isDirectory());
+                // Crea un nuevo nodo para cada archivo.
+                DefaultMutableTreeNode nodeHijo = new DefaultMutableTreeNode(archivoNodo);
                 // Agrega el nodo hijo al nodo actual.
                 node.add(nodeHijo);
                 // Comprueba si el archivo actual es un directorio.
@@ -58,5 +66,41 @@ public class Controlador {
         cargarArchivos(dirDefecto, root); 
         return root;
     }
+    
+    
+    //falla
+    public void establecerIconos(DefaultTreeCellRenderer renderer){
+           // Iconos para directorios
+    ImageIcon directorioCerrado = new ImageIcon("src/main/resources/images/folder.png");
+    ImageIcon directorioAbierto = new ImageIcon("src/main/resources/images/open-folder.png");
+    
+    // Icono para archivos
+    ImageIcon archivoIcono = new ImageIcon("src/main/resources/images/file.png");
+
+    // Configuramos los iconos para los nodos
+    renderer.setClosedIcon(directorioCerrado);
+    renderer.setOpenIcon(directorioAbierto);
+    renderer.setLeafIcon(archivoIcono);
+        
+        
+        
+    }
+    
+    
+    public void abrirPestana(JTabbedPane tabbedPane, String nombreArchivo) {
+    JPanel panel = new JPanel(); // Puedes personalizar este panel según sea necesario
+    tabbedPane.addTab(nombreArchivo, panel); // Agrega una nueva pestaña con un panel vacío
+}
+    
+    
+    public void cerrarPestana(JTabbedPane tabbedPane, MouseEvent evt) {
+    if (evt.getButton() == MouseEvent.BUTTON2) { // Botón 2 es la rueda del ratón
+        int tabIndex = tabbedPane.indexAtLocation(evt.getX(), evt.getY());
+        if (tabIndex >= 0) {
+            tabbedPane.removeTabAt(tabIndex); // Cierra la pestaña
+        }
+    }
+}
+    
 
 }

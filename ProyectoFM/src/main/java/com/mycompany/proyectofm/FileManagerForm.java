@@ -62,6 +62,11 @@ public class FileManagerForm extends javax.swing.JFrame {
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jTree1.setMinimumSize(new java.awt.Dimension(15, 15));
+        jTree1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTree1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTree1);
 
         jSplitPane1.setLeftComponent(jScrollPane1);
@@ -121,6 +126,10 @@ public class FileManagerForm extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTree1MouseClicked
 
     /**
      * @param args the command line arguments
