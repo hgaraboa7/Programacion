@@ -39,29 +39,44 @@ public class Padre2 {
 
             List<Process> listaProceso = new ArrayList<>();
 
-            for (int i = 0; i <= 4; i++) {
+            int i = 0;
             
+            while( i <= 4 ) {
+            
+                
+                
             listaProceso.add(lista.get(i).start());
             
 
             OutputStream ouHijo = listaProceso.get(i).getOutputStream();
             
             
+            
             ouHijo.write(numero);
             ouHijo.flush();
             
             
-             InputStreamReader reader = new InputStreamReader(listaProceso.get(i).getInputStream());
+            
+            
+             BufferedReader reader = new BufferedReader(new InputStreamReader(listaProceso.get(i).getInputStream()));
             
             
 
-            int linea;
-            while ((linea = reader.read()) != -1) {
-                System.out.println("recibido " + linea);
-                ouHijo.close();
+            String linea;
+            if ((linea = reader.readLine()) != null) {
+                System.out.println("recibido  el proceso " +(i+1)+" " + linea);
+                
+                i++;
+                
+                
+            }else{
+                System.out.println("el proceso " +(i+1)+ " "+ linea);
+                
+               
             }
             
             
+            ouHijo.close();
             
             }
             

@@ -5,8 +5,10 @@
 package ejercicio2;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,30 +20,42 @@ import java.util.logging.Logger;
  */
 public class Hijo2 {
     
-    public static void main(String[] args) {
+    public static void main(String[] args){
         
-        try {
-            InputStreamReader reader= new InputStreamReader(System.in);
-            int numero;
+         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out))){
+           
+            int numero=0;
             
-            int numeroHijo=(int)(Math.random()*5+1);
+           
             
+          
+                
             
-            
-            while((numero=reader.read())!=-1){
+            while(true){
                 
-                if(numero==numeroHijo)
-                    System.out.println("El Proceso responde");
+                numero=reader.read();
                 
-                
-                
+                 int numeroHijo=(int)(Math.random()*5+1);
+                if(numero==numeroHijo){
+                    writer.write("funcioa");
+                    writer.flush();
+                    break; 
+                }
+                else{
+                        writer.write("NO funciona");
+                    writer.flush(); 
+                }
+                    
             }
+                
             
+            
+        
+        
+        
         } catch (IOException ex) {
             Logger.getLogger(Hijo2.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-    }
-    
+        }
 }
